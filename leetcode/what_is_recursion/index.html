@@ -1,0 +1,608 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.18.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>What is Recursion - TechInno</title>
+<meta name="description" content="Definition ">
+
+
+  <meta name="author" content="SamYeon Kim">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="TechInno">
+<meta property="og:title" content="What is Recursion">
+<meta property="og:url" content="/leetcode/what_is_recursion/">
+
+
+  <meta property="og:description" content="Definition ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-02-04T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/leetcode/what_is_recursion/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "SamYeon Kim",
+      "url": "/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="TechInno Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!-- KaTeX -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css"
+  integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js"
+  integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ"
+  crossorigin="anonymous"></script>
+
+  
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+<link rel="manifest" href="/icon/site.webmanifest">
+<link rel="mask-icon" href="/icon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          TechInno
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/" >Posts</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+
+<div id="main" role="main" class="wideleft">
+
+
+  
+  
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="What is Recursion">
+    <meta itemprop="description" content="Definition">
+    <meta itemprop="datePublished" content="2020-02-04T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">What is Recursion
+</h1>
+          <!-- 
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 분 소요
+
+</p>
+           -->
+        </header>
+        
+          <p class="page__date"> <time datetime="2020-02-04T00:00:00+09:00">February 4, 2020</time></p>
+        
+        
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">    
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tag/article" class="page__taxonomy-item" rel="tag">#Article</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tag/leetcode" class="page__taxonomy-item" rel="tag">#LeetCode</a>
+    
+    </span>
+  </p>
+    
+        <hr></hr>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#definition">Definition</a></li>
+  <li><a href="#keywod">Keywod</a></li>
+  <li><a href="#example">Example</a>
+    <ul>
+      <li><a href="#recurrence-relation">recurrence relation</a></li>
+      <li><a href="#base-case">base case</a></li>
+    </ul>
+  </li>
+  <li><a href="#memoization">Memoization</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="definition">Definition</h1>
+
+<p>문제를 풀기 위한 접근방법중 하나로서, 함수 자기자신을 서브루틴 처럼 호출 하는 방식</p>
+
+<h1 id="keywod">Keywod</h1>
+
+<p><code class="highlighter-rouge">base case</code> : 추가적인 재귀호출없이 바로 결과를 연산해 내는 case, 재귀 호출의 가장 마지막 단계를 수행하는 호출.</p>
+
+<p><code class="highlighter-rouge">recurrence relation</code> : 문제의 결과와 하위 문제들의 관계, <code class="highlighter-rouge">base case</code>에 도달 하기 위한 규칙</p>
+
+<h1 id="example">Example</h1>
+
+<p><code class="highlighter-rouge">Pascal's Triangle</code>이 재귀 호출의 기본적인 예시가 될 수 있다.
+<code class="highlighter-rouge">Pascal's Triangle</code>은 삼각형 모양을 이루게 하는 숫자의 배열인데, 각 로우의 첫번째와 마지막번째의 숫자는 항상 1이고, 그 사이에있는 숫자들은 이전 로우의 바로 위에 있는 숫자와 그 앞 숫자의 합이다.</p>
+
+<p><img src="/assets/img/leetcode/pascal_triangle.png" alt="" /></p>
+
+<h2 id="recurrence-relation">recurrence relation</h2>
+
+<p><code class="highlighter-rouge">Pascal's Triangle</code>에서 <code class="highlighter-rouge">i</code>번째 로우의 <code class="highlighter-rouge">j</code>번째에 있는 숫자를 산출해 내는 함수 <code class="highlighter-rouge">f(i,j)</code>가 있다고 하자.
+이때 다음의 수식을 이용해서 <code class="highlighter-rouge">recurrence relation</code>을 표현 할 수 있다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="base-case">base case</h2>
+
+<p>우측끝 과 좌측끝에 해당하는것들이 <code class="highlighter-rouge">base case</code>이다. 다음과 같은 수식이 된다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">where</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">or</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h1 id="memoization">Memoization</h1>
+
+<p>재귀를 하다보면 <code class="highlighter-rouge">중복 연산</code>을 하게 되는 경우가 발생한다. 예를 들어 <code class="highlighter-rouge">Fibonacci number</code>같은 경우 다음과 같은 수식으로 구할 수 있다.</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">f</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">n</span><span class="o">!</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>그래서 다음 예시로 <code class="highlighter-rouge">중복 연산</code>이 발생한다는것을 알 수 있다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>f(4) = f(3) + f(2) = (f(2) + f(1)) + f(2)
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>위 식 처럼 <code class="highlighter-rouge">f(2)</code>에 대한 연산이 2번 발생한다. 이렇게 되면 우린 이미 <code class="highlighter-rouge">f(2)</code>에 대한 연산을 한번 했는데, 한번 더 함으로써
+불필요한 연산을 더 하게 된다. 위 예시는 <code class="highlighter-rouge">4</code>에 대한 예시라서 그렇지 만약 숫자가 더 커지면 <code class="highlighter-rouge">중복 연산</code>은 미친듯이 많이 발생한다.</p>
+
+<p><code class="highlighter-rouge">중복 연산</code>을 방지하기 위해선 한번 연산했던것에 대한 저장이 필요하다. 그것을 해결하기 위한 방법중 하나로 <code class="highlighter-rouge">Memoization</code>을 도입한다.
+<code class="highlighter-rouge">Memoization</code>은 중간 결과값을 메모리에 저장하고 있는것으로 특정 <code class="highlighter-rouge">Input</code>에 의한 값을 저장 함으로써 다음에 동일한 <code class="highlighter-rouge">Input</code>이 왔을땐 연산을 하기 보단 저장해 놨던 값을
+반환 하는 식으로 처리 한다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="p">(</span> <span class="n">n</span> <span class="n">is</span> <span class="n">cached</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">cached</span> <span class="n">result</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tag/article" class="page__taxonomy-item" rel="tag">Article</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tag/leetcode" class="page__taxonomy-item" rel="tag">LeetCode</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/category/leetcode" class="page__taxonomy-item" rel="tag">LeetCode</a>
+    
+    </span>
+  </p>
+
+    
+        <!-- 
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2020-02-04T00:00:00+09:00">February 4, 2020</time></p>
+             -->
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=What+is+Recursion%20%2Fleetcode%2Fwhat_is_recursion%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=%2Fleetcode%2Fwhat_is_recursion%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=%2Fleetcode%2Fwhat_is_recursion%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/leetcode/what_is_quick_sort/" class="pagination--pager" title="What is Quick Sort
+">이전</a>
+    
+    
+      <a href="/leetcode/word_search_ii/" class="pagination--pager" title="Word Search II
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/leetcode/top_k_frequent_elements/" rel="permalink">Top K Frequent Elements
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  최대 1 분 소요
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Problem
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/leetcode/word_search_ii/" rel="permalink">Word Search II
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 분 소요
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Problem
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/leetcode/what_is_quick_sort/" rel="permalink">What is Quick Sort
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 분 소요
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Definition
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/leetcode/what_is_devide_and_conquer/" rel="permalink">What is Devide and Conquer
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  최대 1 분 소요
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Definition
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+<script src="/assets/js/katex_init.js"></script>
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/SamYeonKim/STUDY" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 SamYeon Kim. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
