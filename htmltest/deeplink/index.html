@@ -36,16 +36,17 @@
                 </td>
             </tr>
             <tr>
-                <td>Alert 표시</td>
-                <td><a href="#ncmop://alert?title=알림&content=테스트 메시지 입니다.">ncmop://alert?title=알림&content=테스트 메시지 입니다.</a></td>
+                <td>테스트 딥링크 with button location.href</td>
+                <td>
+                    <button onclick="location.href='ncmop://close'">ncmop://close</button>
+                    <button onclick="location.href='ncmop://custom_value?values=testvalue'">ncmop://custom_value?values=testvalue</button>                
+                </td>
             </tr>
             <tr>
-                <td>Custom value(Web -> app)</td>
+                <td>테스트 딥링크 with button location.replace</td>
                 <td>
-                    <input type="checkbox" name="wv_close" id="wv_close" value="yes">WebView 닫기 옵션<br />
-                    value : <input type="text" name="values" id="values">
-                    <hr />
-                    <a href="#ncmop://custom_value?values=" id="custom_value_url">ncmop://custom_value?values=</a>
+                    <button onclick="location.replace('ncmop://close')">ncmop://close</button>
+                    <button onclick="location.replace('ncmop://custom_value?values=testvalue')">ncmop://custom_value?values=testvalue</button>                
                 </td>
             </tr>
         </table>
