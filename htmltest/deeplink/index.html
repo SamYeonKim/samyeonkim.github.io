@@ -15,16 +15,25 @@
                 <th width="30%">Action</th>
                 <th>Execute</th>
             <tr>
-                <td>WebView 닫기</td>
-                <td><a href="#ncmop://close">ncmop://close</a></td>
+                <td>현재 사용 딥링크 with target="deeplink"</td>
+                <td>
+                    <a href="ncmop://close" target="deeplink">ncmop://close</a>
+                    <a href="ncmop://custom_value?values=testvalue" target="deeplink">ncmop://custom_value?values=testvalue</a>
+                </td>
             </tr>
             <tr>
-                <td>외부 브라우저 띄우기</td>
-                <td><a href="#ncmop://open_external_browser?url=http%3A//www.plaync.com&wv_close=no">ncmop://open_external_browser?url=http%3A//www.plaync.com&wv_close=no</a></td>
+                <td>테스트 딥링크 with target="_self"</td>
+                <td>
+                    <a href="ncmop://close" target="_self">ncmop://close</a>
+                    <a href="ncmop://custom_value?values=testvalue" target="_self">ncmop://custom_value?values=testvalue</a>
+                </td>
             </tr>
             <tr>
-                <td>외부 브라우저 띄우기(WebView 닫기)</td>
-                <td><a href="#ncmop://open_external_browser?url=http%3A//www.plaync.com&wv_close=yes">ncmop://open_external_browser?url=http%3A//www.plaync.com&wv_close=yes</a></td>
+                <td>테스트 딥링크 without target</td>
+                <td>
+                    <a href="ncmop://close">ncmop://close</a>
+                    <a href="ncmop://custom_value?values=testvalue">ncmop://custom_value?values=testvalue</a>
+                </td>
             </tr>
             <tr>
                 <td>Alert 표시</td>
